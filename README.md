@@ -76,4 +76,8 @@ no font: the letters are rectangles.
 
 `brig-sh/brig` and `brig-sh/hull` keep copies under `assets/`, so their READMEs
 render without a cross-repo fetch. Those copies are byte-identical to the files
-here, verified on 2026-09-10. If a mark changes, refresh them too.
+here, verified on 2026-08-18. If a mark changes, refresh them too.
+
+## AI policy
+
+AI-assisted development is welcome in brig-artwork. See [AI_POLICY.md](AI_POLICY.md).
