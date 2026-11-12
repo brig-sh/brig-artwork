@@ -57,8 +57,8 @@ the org picture; everything else is convenience.
 
 ## Building
 
-Everything here is generated. Edit `pixel.py` or `gen.py` and rebuild, never
-the SVGs by hand.
+Everything in `svg/` and `png/` is generated. Edit `pixel.py` or `gen.py` and
+rebuild, never the SVGs by hand. `herdr-brig/` is the exception, see below.
 
 ```
 ./build.sh
@@ -71,6 +71,37 @@ back byte-identical files.
 You need `rsvg-convert` (`brew install librsvg`) for the PNGs. The SVGs need
 Python and nothing else. The marks carry no font dependency, because there is
 no font: the letters are rectangles.
+
+## The herdr-brig joint mark
+
+`herdr-brig/` holds the mark for
+[brig-sh/herdr-brig](https://github.com/brig-sh/herdr-brig): the brig porthole
+with herdr's ram leaning out of it. It keeps the porthole from before the pixel
+wordmark replaced it as the brig mark. Unlike the rest of this repo it is not
+generated. It is a raster, cut out of an illustration, so treat the PNGs as the
+source.
+
+| File | Use |
+| --- | --- |
+| `herdr-brig-mark.png` | The mark at full size (1767×1564), transparent outside the porthole, white glass inside. |
+| `herdr-brig-mark-1024.png` | The same, padded to a 1024 square, for avatars and READMEs. |
+| `herdr-brig-social-preview.png` | The repository's GitHub social preview, 1280×640. Everything sits inside GitHub's 80px safe border. |
+| `social-preview.html` | The source of the social preview. |
+
+The social preview uses the palette above on Paper: navy type, the owner in
+brass deep, and Avenir Next. It is the light-background mark, so do not put it
+on navy, where the ring disappears. To re-render it after a change, from
+`herdr-brig/`:
+
+```
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new \
+  --hide-scrollbars --force-device-scale-factor=2 --window-size=1280,640 \
+  --allow-file-access-from-files --screenshot=card@2x.png \
+  "file://$PWD/social-preview.html"
+sips -z 640 1280 card@2x.png --out herdr-brig-social-preview.png && rm card@2x.png
+```
+
+Upload it under the repository's Settings, General, Social preview.
 
 ## Copies in the repos
 
